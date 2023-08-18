@@ -1,2 +1,4 @@
 # BlackjackCalculator
-A text based calculator for blackjack Basic Strategy
+A text-based calculator for blackjack Basic Strategy
+
+Author: Andrew McLaren
