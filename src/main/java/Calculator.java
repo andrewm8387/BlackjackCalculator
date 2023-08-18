@@ -1,5 +1,3 @@
-import java.util.ArrayList;
-
 public class Calculator {
 
     public Actions calculate(Cards dealerCard, Hand playerCards) { // assuming double after split is allowed
@@ -13,37 +11,26 @@ public class Calculator {
                     case TWO, THREE, SEVEN -> {
                         if (dealerCard.value() < 8) {
                             return Actions.SPLIT;
-                        } else {
-                            break;
                         }
                     }
                     case FOUR -> {
                         if (dealerCard.value() < 7 && dealerCard.value() > 4) {
                             return Actions.SPLIT;
-                        } else {
-                            break;
                         }
                     }
                     case SIX -> {
                         if (dealerCard.value() < 7) {
                             return Actions.SPLIT;
-                        } else {
-                            break;
                         }
                     }
                     case NINE -> {
                         if (dealerCard.value() < 10 && dealerCard.value() != 7) {
                             return Actions.SPLIT;
-                        } else {
-                            break;
                         }
                     }
                     case FIVE, TEN, JACK, QUEEN, KING -> {
-                        break;
                     }
-                    default -> {
-                        throw new IllegalStateException("Unexpected value: " + playerCards.get(0) + ", " + playerCards.get(1));
-                    }
+                    default -> throw new IllegalStateException("Unexpected value: " + playerCards.get(0) + ", " + playerCards.get(1));
                 }
             }
             if (playerCards.get(0).equals(Cards.ACE) || playerCards.get(1).equals(Cards.ACE)) { //soft hand
@@ -85,15 +72,10 @@ public class Calculator {
                             return Actions.STAND;
                         }
                     }
-                    case NINE -> {
+                    case NINE, TEN, JACK, QUEEN, KING -> {
                         return Actions.STAND;
                     }
-                    case TEN, JACK, QUEEN, KING -> {
-                        return Actions.STAND;
-                    }
-                    default -> {
-                        throw new IllegalStateException("Unexpected value: " + playerCards.get(0) + ", " + playerCards.get(1));
-                    }
+                    default -> throw new IllegalStateException("Unexpected value: " + playerCards.get(0) + ", " + playerCards.get(1));
                 }
             }
         }
@@ -154,9 +136,7 @@ public class Calculator {
             case 17, 18, 19, 20, 21 -> {
                 return Actions.STAND;
             }
-            default -> {
-                throw new IllegalStateException("Unexpected total value: " + total);
-            }
+            default -> throw new IllegalStateException("Unexpected total value: " + total);
         }
 
     }

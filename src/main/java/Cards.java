@@ -33,9 +33,7 @@ public enum Cards {
             case TEN, JACK, QUEEN, KING -> {
                 return 10;
             }
-            default -> {
-                return 0;
-            }
+            default -> throw new IllegalStateException(this + " is not a valid card and has no value.");
         }
     }
 

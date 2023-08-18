@@ -2,7 +2,7 @@ import java.util.ArrayList;
 
 public class Hand {
 
-    private final ArrayList<Cards> cards = new ArrayList<Cards>();
+    private final ArrayList<Cards> cards = new ArrayList<>();
 
     public Hand(ArrayList<Cards> cards) {
         this.cards.addAll(cards);
@@ -17,11 +17,7 @@ public class Hand {
     }
 
     public ArrayList<Cards> getCards() {
-        return new ArrayList<Cards>(cards);
-    }
-
-    public boolean contains(Cards c) {
-        return cards.contains(c);
+        return new ArrayList<>(cards);
     }
 
     public int count(Cards c) {

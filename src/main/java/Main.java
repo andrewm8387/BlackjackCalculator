@@ -3,15 +3,22 @@ import java.util.Scanner;
 
 public class Main {
     public static void main(String[] args) {
+
         Scanner userInput = new Scanner(System.in);
+
         System.out.println("Welcome to the Blackjack basic strategy calculator!");
         System.out.println("Enter all cards in your hand, separated by spaces, with capital letters for face cards.");
         System.out.print("Enter your hand: ");
+
         String hand = userInput.nextLine();
+
         System.out.print("Enter the dealer's up card: ");
+
         String dealerCardString = userInput.nextLine();
+
         String[] stringHand = hand.split(" ");
         ArrayList<Cards> cardHand = new ArrayList<>();
+
         for (String card : stringHand) {
             switch (card) {
                 case "A" -> cardHand.add(Cards.ACE);
@@ -31,7 +38,9 @@ public class Main {
             }
         }
         Hand playerHand = new Hand(cardHand);
+
         System.out.println("Your hand: " + playerHand.getCards().toString().replace("[", "").replace("]", ""));
+
         Cards dealerCard;
         switch (dealerCardString) {
             case "A" -> dealerCard = Cards.ACE;
@@ -49,6 +58,7 @@ public class Main {
             case "K" -> dealerCard = Cards.KING;
             default -> throw new IllegalStateException("Unexpected dealer card string value: " + dealerCardString);
         }
+
         System.out.println("Dealer's up card: " + dealerCard);
         System.out.println("Calculating...");
         Calculator calculator = new Calculator();
