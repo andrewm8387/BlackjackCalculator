@@ -11,7 +11,7 @@ public class Main {
         System.out.print("Enter the dealer's up card: ");
         String dealerCardString = userInput.nextLine();
         String[] stringHand = hand.split(" ");
-        ArrayList<Cards> cardHand = new ArrayList<Cards>();
+        ArrayList<Cards> cardHand = new ArrayList<>();
         for (String card : stringHand) {
             switch (card) {
                 case "A" -> cardHand.add(Cards.ACE);
@@ -49,7 +49,7 @@ public class Main {
             case "K" -> dealerCard = Cards.KING;
             default -> throw new IllegalStateException("Unexpected dealer card string value: " + dealerCardString);
         }
-        System.out.println("Dealer's up card: " + dealerCard.toString());
+        System.out.println("Dealer's up card: " + dealerCard);
         System.out.println("Calculating...");
         Calculator calculator = new Calculator();
         Actions actions = calculator.calculate(dealerCard, playerHand);
