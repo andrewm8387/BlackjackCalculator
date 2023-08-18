@@ -89,7 +89,7 @@ public class Calculator {
                         return Actions.STAND;
                     }
                     case TEN, JACK, QUEEN, KING -> {
-                        return Actions.HIT;
+                        return Actions.STAND;
                     }
                     default -> {
                         throw new IllegalStateException("Unexpected value: " + playerCards.get(0) + ", " + playerCards.get(1));
@@ -100,14 +100,21 @@ public class Calculator {
         //hard hand
         int total = 0;
         for (Cards card : playerCards.getCards()) { //add up total
-            if (card.equals(Cards.ACE) && total > 10) {
-                total += 1;
-            } else {
-                total += card.value();
-            }
+            total += card.value();
+        }
+        if (total == 21) {
+            return Actions.STAND;
         }
         if (total > 21) {
-            throw new IllegalStateException("Total is greater than 21: Bust");
+            for (int i = 0; i < playerCards.count(Cards.ACE); i++) {
+                total -= 10;
+                if (total <= 21) {
+                    break;
+                }
+            }
+            if (total > 21) {
+                throw new IllegalStateException("Unexpected total value: " + total);
+            }
         }
         switch (total) {
             case 2, 3, 4, 5, 6, 7, 8 -> {

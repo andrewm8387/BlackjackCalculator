@@ -8,10 +8,8 @@ public class Main {
         System.out.println("Enter all cards in your hand, separated by spaces, with capital letters for face cards.");
         System.out.print("Enter your hand: ");
         String hand = userInput.nextLine();
-        System.out.println();
         System.out.print("Enter the dealer's up card: ");
         String dealerCardString = userInput.nextLine();
-        System.out.println();
         String[] stringHand = hand.split(" ");
         ArrayList<Cards> cardHand = new ArrayList<Cards>();
         for (String card : stringHand) {
@@ -33,7 +31,7 @@ public class Main {
             }
         }
         Hand playerHand = new Hand(cardHand);
-        System.out.println("Your hand: " + playerHand.toString());
+        System.out.println("Your hand: " + playerHand.getCards().toString().replace("[", "").replace("]", ""));
         Cards dealerCard;
         switch (dealerCardString) {
             case "A" -> dealerCard = Cards.ACE;

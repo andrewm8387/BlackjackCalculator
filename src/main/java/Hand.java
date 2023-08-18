@@ -19,4 +19,18 @@ public class Hand {
     public ArrayList<Cards> getCards() {
         return new ArrayList<Cards>(cards);
     }
+
+    public boolean contains(Cards c) {
+        return cards.contains(c);
+    }
+
+    public int count(Cards c) {
+        int count = 0;
+        for (Cards card : cards) {
+            if (card.equals(c)) {
+                count++;
+            }
+        }
+        return count;
+    }
 }
